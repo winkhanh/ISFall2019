@@ -1,24 +1,23 @@
 #!/usr/bin/env python3
 
-
-#This chap is about explotary dataset
+#this chap is the first idea of how KNN works as well as how ML model in sklearn works
 from sklearn import datasets
-import pandas as pd 
-import numpy as np 
-import matplotlib.pyplot as plt
-plt.style.use('ggplot')
+from sklearn.neighbors import KNeighborsClassifier
+
 iris=datasets.load_iris()
-print(type(iris))
 
-print(iris.keys())
-
-x=iris.data
+X=iris.data 
 y=iris.target
 
-df= pd.DataFrame(x,columns=iris.feature_names)
+knn=KNeighborsClassifier(n_neighbors=6)
+knn.fit(X,y)
 
-_ = pd.plotting.scatter_matrix(df,c=y, figsize=[8,8], s=150, marker='D')
-plt.show()
+X_new=[
+    [6.0, 4.9, 2.0, 3.0],
+    [5.3, 2.5, 2.4, 2.0],
+    [3.2, 2.5, 4.0, 1.0]
+]
 
+prediction=knn.predict(X_new)
 
-
+print(prediction)
