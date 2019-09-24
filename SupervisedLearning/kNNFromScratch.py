@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 class knnByMe:
     def __init__(self,k_neighbors=5):
         self.k_neighbors=k_neighbors
